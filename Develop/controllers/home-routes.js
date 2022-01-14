@@ -26,6 +26,17 @@ router.get('/post/:id', async (req, res) => {
       //  SECOND ARGUMENT IS AN OBJECT IN WHICH YOU USE PROPERTY 'INCLUDE' TO INCLUDE USER
       //  AND COMMENT
       // TODO: YOUR CODE HERE
+      req.params.id, {
+      include: [
+        {
+          model: User
+        },
+        {
+          model: Comment,
+          include: [User]
+        }
+      ]
+    }
     );
 
     if (postData) {
